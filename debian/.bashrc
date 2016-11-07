@@ -17,9 +17,9 @@ alias hostmake="make TARGET=host_i386_no_wddi"
 alias waf="cd /home/ahumphre/code/waf/"
 alias expct="/opt/stc/expect/bin/expect"
 
-TARGET_TOOLCHAIN_PATH="/home/ahumphre/code/buildroot/output/host/usr/bin"
+TARGET_TOOLCHAIN_PATH="/mnt/ext/buildroot/output/host/usr/bin"
 TARGET_CROSS_COMPILE=mips-linux-
-EXTRA="TARGET_CROSS_COMPILE=mips-linux- TARGET_TOOLCHAIN_PATH=/home/ahumphre/code/buildroot/output/host/usr/bin"
+EXTRA="TARGET_CROSS_COMPILE=mips-linux- TARGET_TOOLCHAIN_PATH=/mnt/ext/buildroot/output/host/usr/bin"
 
 alias wds2="waf; make TARGET=wds2linux ${EXTRA} > /dev/null; cd -;"
 alias wds3="waf; make TARGET=wds3linux ${EXTRA} > /dev/null; cd -;"
@@ -58,8 +58,8 @@ alias glp="git log --pretty=format:'%C(yellow)%h|%Cred%ad|%C(cyan)%an|%Cgreen%d 
 #alias glg="git log --graph --full-history --all --color --pretty=format:'\''%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s'\'' --date=local"
 alias glg='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%hx09%x1b[32m%d%x1b[0m%x20%s"'
 
-alias gdbclient="/home/ahumphre/buildroot/output/toolchain/gdbhost-7.4.1/gdb/gdb"
-alias gdbserver="/home/ahumphre/buildroot/output/target/usr/bin/gdbserver"
+alias gdbclient="/mnt/ext/buildroot/output/toolchain/gdbhost-7.4.1/gdb/gdb"
+alias gdbserver="/mnt/ext/buildroot/output/target/usr/bin/gdbserver"
 
 alias ag="ag --nogroup --color"
 
@@ -78,7 +78,7 @@ export HISTTIMEFORMAT="%F %T "
 export https_proxy=$http_proxy
 export stc_path=/opt/stc
 
-export PATH=~/apps/firefox:~/apps:/usr/local/bin:/bin:/usr/bin:/usr/sbin::/sbin:/home/ahumphre/code/buildroot/output/host/usr/bin/:/mnt/dswork/ahumphre/:/home/ahumphre/code/scripts/:/usr/games/
+export PATH=~/apps/firefox:~/apps:/usr/local/bin:/bin:/usr/bin:/usr/sbin::/sbin:/mnt/ext/buildroot/output/host/usr/bin/:/mnt/dswork/ahumphre/:/home/ahumphre/code/scripts/:/usr/games/
 #$(find $HOME/apps -type d -printf ":%p" ):
 #:/mnt/dswork/opt/asidua-mips-toolchain/mips-unknown-linux-gnu/bin/:/mnt/dswork/opt/winpathtools/dps3_0/bin/linux/
 #:/mnt/dswork/opt/winpathtools/winmon/bin:/mnt/dswork/ahumphre/:/mnt/extHDD/code/scripts/:/mnt/extHDD/apps
@@ -228,7 +228,7 @@ function cls {
     printLsStats
 }
 
-export OWN_TOOL_PATH=/home/ahumphre/code/buildroot/output/host/usr/bin
+export OWN_TOOL_PATH=/mnt/ext/buildroot/output/host/usr/bin
 export DEFAULT_WAF_BUILD_CMD="make TARGET_TOOLCHAIN_PATH=$OWN_TOOL_PATH TARGET_CROSS_COMPILE=mips-linux-"
 function build {
     target=$1
@@ -237,3 +237,4 @@ function build {
     $DEFAULT_WAF_BUILD_CMD TARGET=${target}linux $*
 }
 
+alias glp='git log HEAD~..origin/elcon-no-stats --oneline --decorate=full --pretty=format:'\''%C(yellow)%h %Cred%ad %Cblue%<(15)%an%Cgreen%d %Creset%s'\'' --date=short'
