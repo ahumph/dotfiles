@@ -19,41 +19,44 @@ execute pathogen#infect()
 """ Vundle config
 set nocompatible
 filetype off
+
 " set the runtime path to include Vundle and initialise
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/.vim/bundle/vundle')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-unimpaired'
+"Plugin 'mileszs/ack.vim'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'justinmk/vim-sneak'
-Plugin 'tommcdo/vim-lion'
-Plugin 'tpope/vim-surround'
-Plugin 'xolox/vim-misc'
+"Plugin 'justinmk/vim-sneak'
+"Plugin 'tommcdo/vim-lion'
+"Plugin 'tpope/vim-surround'
 Plugin 'xolox/vim-colorscheme-switcher'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'tmhedberg/SimpylFold'
 
 " Keep plugin commands between vundle#begin/end
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 " Plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
+"Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
+
 filetype plugin indent on
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -121,13 +124,14 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.swo,*.o*,*.zip,*.exe
 """"""""""""""""""""""
 let g:syntastic_c_checkers = ['gcc', 'make']
 let g:syntastic_c_include_dirs = ['/mnt/extHDD/code/elcon_cmm/elcon/', '/mnt/extHDD/code/elcon_cmm/cmm/']
-""""""""""""""""""""""
+"""""""""""""""""""""""
 
 " In case BS isn't set
 set bs=2
 
 " Set line numbers on
-"set number
+set number
+set relativenumber
 
 " Allow mouse usage
 set mouse=a
@@ -137,7 +141,7 @@ set ttymouse=xterm2
 filetype plugin on
 
 " Disable messages from Cscope
-" set nocscopeverbose
+ set nocscopeverbose
 
 " Set how many lines of history VIM has to remember
 set history=3000
@@ -217,7 +221,7 @@ if has("gui_running")
   "set t_Co=256
   "colorscheme synic
   "set background=dark
-  colorscheme mustang
+  colorscheme pf_earth
   set cursorline
   hi CursorLine term=bold cterm=bold guibg=black
   hi StatusLine guibg=Black guifg=DodgerBlue
@@ -367,7 +371,7 @@ endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ---> Moving, tabs, buffers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map space to / and c-space to ? (search forward and back)
 map <c-space> *
 "map <c-space> #
