@@ -21,12 +21,12 @@ alias agrep='egrep -iIRn --color=auto'
 alias vi='vim'
 alias gs="git status"
 alias gl="git log"
-alias gc="git commit"
+#alias gc="git commit"
 alias ga="git add"
 alias gd="git diff"
 alias glp="git log --pretty=format:'%C(yellow)%h|%Cred%ad|%C(cyan)%an|%Cgreen%d %Creset%s' --date=local"
-| column -ts'|' | less -r"
-alias glg="git log --graph --full-history --all --color --pretty=format:'\''%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s'\'' --date=local"
+#| column -ts'|' | less -r"
+#alias glg="git log --graph --full-history --all --color --pretty=format:'\''%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s'\'' --date=local"
 #alias glg='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%hx09%x1b[32m%d%x1b[0m%x20%s"'
 alias glp='git log HEAD~..origin/elcon-no-stats --oneline --decorate=full --pretty=format:'\''%C(yellow)%h %Cred%ad %Cblue%<(15)%an%Cgreen%d %Creset%s'\'' --date=short'
 #alias ag="ag --nogroup --color"
@@ -40,13 +40,14 @@ alias glp='git log HEAD~..origin/elcon-no-stats --oneline --decorate=full --pret
 ################
 # Variables
 ################
-stty -ixon
+#stty -ixon
 export HISTTIMEFORMAT="%F %T "
-#export https_proxy=$http_proxy
+export http_proxy="http://proxy.asidua.com:7001"
+export https_proxy=$http_proxy
 
 export stc_path=/opt/stc
 
-export PATH=~/apps/firefox:~/apps:/usr/local/bin:/bin:/usr/bin:/usr/sbin::/sbin:/mnt/ext/buildroot/output/host/usr/bin/:/mnt/dswork/ahumphre/:/home/ahumphre/code/scripts/:/usr/games/
+export PATH=~/apps/firefox:~/apps:/usr/local/bin:/bin:/usr/bin:/usr/sbin::/sbin:/mnt/ext/buildroot/output/host/usr/bin/:/home/ahumphre/code/scripts/:/usr/games/
 #$(find $HOME/apps -type d -printf ":%p" ):
 #:/mnt/dswork/opt/asidua-mips-toolchain/mips-unknown-linux-gnu/bin/:/mnt/dswork/opt/winpathtools/dps3_0/bin/linux/
 #:/mnt/dswork/opt/winpathtools/winmon/bin:/mnt/dswork/ahumphre/:/mnt/extHDD/code/scripts/:/mnt/extHDD/apps
@@ -71,10 +72,11 @@ PURPLE='\[$(tput setaf 5)\]'
 CYAN='\[$(tput setaf 6)\]'
 WHITE='\[$(tput setaf 7)\]'
 SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
-__git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+#__git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
 #
 ## Default prompt
-export PS1="${RED}\h:${GREEN}\W ${CYAN}${__git_branch}${YELLOW}\$ ${RESET}"
+export PS1="${RED}\h:${GREEN}\W ${YELLOW}\$ ${RESET}"
+#export PS1="${RED}\h:${GREEN}\W ${CYAN}${__git_branch}${YELLOW}\$ ${RESET}"
 #
 ## define color to additional file types
 export LS_COLORS="*.c=0;36:*.h=0;34:*.py=0;35:*.exp=0;33"
@@ -181,9 +183,18 @@ export OWN_TOOL_PATH=/mnt/ext/buildroot/output/host/usr/bin
 export DEFAULT_WAF_BUILD_CMD="make TARGET_TOOLCHAIN_PATH=$OWN_TOOL_PATH TARGET_CROSS_COMPILE=mips-linux-"
 function build {
     target=$1
+    if [ $# -eq 2 ]
+    then
+        echo "arg"
+        WAF_CONFIG="WAF_CONFIG=$2"
+    else
+        echo "No arg"
+        WAF_CONFIG=""
+    fi
     shift
-    echo "$DEFAULT_WAF_BUILD_CMD TARGET=${target}linux $*"
-    $DEFAULT_WAF_BUILD_CMD TARGET=${target}linux $*
+    shift
+    echo "$DEFAULT_WAF_BUILD_CMD TARGET=${target}linux ${WAF_CONFIG} $*"
+    $DEFAULT_WAF_BUILD_CMD TARGET=${target}linux ${WAF_CONFIG} $*
 }
 
 . ~/.git-completion.bash

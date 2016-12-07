@@ -123,7 +123,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.swo,*.o*,*.zip,*.exe
 " Syntastic
 """"""""""""""""""""""
 let g:syntastic_c_checkers = ['gcc', 'make']
-let g:syntastic_c_include_dirs = ['/mnt/extHDD/code/elcon_cmm/elcon/', '/mnt/extHDD/code/elcon_cmm/cmm/']
+let g:syntastic_c_include_dirs = ['/mnt/ext/waf/', '/mnt/ext/buildroot/output/build/']
 """""""""""""""""""""""
 
 " In case BS isn't set
