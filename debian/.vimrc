@@ -221,7 +221,7 @@ if has("gui_running")
   "set t_Co=256
   "colorscheme synic
   "set background=dark
-  colorscheme pf_earth
+  colorscheme mustang
   set cursorline
   hi CursorLine term=bold cterm=bold guibg=black
   hi StatusLine guibg=Black guifg=DodgerBlue
