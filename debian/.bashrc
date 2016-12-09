@@ -40,18 +40,10 @@ alias glp='git log HEAD~..origin/elcon-no-stats --oneline --decorate=full --pret
 ################
 # Variables
 ################
-#stty -ixon
 export HISTTIMEFORMAT="%F %T "
-export http_proxy="http://proxy.asidua.com:7001"
 export https_proxy=$http_proxy
-
 export stc_path=/opt/stc
-
-export PATH=~/apps/firefox:~/apps:/usr/local/bin:/bin:/usr/bin:/usr/sbin::/sbin:/mnt/ext/buildroot/output/host/usr/bin/:/home/ahumphre/code/scripts/:/usr/games/
-#$(find $HOME/apps -type d -printf ":%p" ):
-#:/mnt/dswork/opt/asidua-mips-toolchain/mips-unknown-linux-gnu/bin/:/mnt/dswork/opt/winpathtools/dps3_0/bin/linux/
-#:/mnt/dswork/opt/winpathtools/winmon/bin:/mnt/dswork/ahumphre/:/mnt/extHDD/code/scripts/:/mnt/extHDD/apps
-
+export PATH=~/apps/firefox:~/apps:/usr/local/bin:/bin:/usr/bin:/usr/sbin::/sbin:/mnt/ext/buildroot/output/host/usr/bin/:/u/ahumphre/code/scripts/:/usr/games/
 export LD_LIBRARY_PATH=/usr/local/lib
 
 # ignore duplicate entries
@@ -72,13 +64,13 @@ PURPLE='\[$(tput setaf 5)\]'
 CYAN='\[$(tput setaf 6)\]'
 WHITE='\[$(tput setaf 7)\]'
 SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
-#__git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
-#
-## Default prompt
-export PS1="${RED}\h:${GREEN}\W ${YELLOW}\$ ${RESET}"
-#export PS1="${RED}\h:${GREEN}\W ${CYAN}${__git_branch}${YELLOW}\$ ${RESET}"
-#
-## define color to additional file types
+__git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+
+# Default prompt
+#export PS1="${RED}\h:${GREEN}\W ${YELLOW}\$ ${RESET}"
+export PS1="${RED}\h:${GREEN}\W ${CYAN}${__git_branch}${YELLOW}\$ ${RESET}"
+
+# define color to additional file types
 export LS_COLORS="*.c=0;36:*.h=0;34:*.py=0;35:*.exp=0;33"
 
 ###############
@@ -86,7 +78,6 @@ export LS_COLORS="*.c=0;36:*.h=0;34:*.py=0;35:*.exp=0;33"
 ###############
 
 # Telnet to board
-
 function tn {
         if [ -z "$1" ] ; then
                 echo "No IP address given."
